@@ -1,21 +1,26 @@
-import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
+import { HttpService } from '@nestjs/axios';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+export interface Cat {
+  id: string;
+  url: string;
+}
 
 @Injectable()
 export class CatsService {
   constructor(private readonly httpService: HttpService) {}
 
-  findAll(): Observable<any> {
-    const url = 'https://api.thecatapi.com/v1/images/search?limit=100';
-
+  getCats(): Observable<Cat[]> {
+    const url = 'https://api.thecatapi.com/v1/images/search?limit=15';
     const headers = {
-      'x-api-key': 'API_KEY', // Замените YOUR_API_KEY на ваш реальный API-ключ
+      'x-api-key': 'Api_key',
       'Content-Type': 'application/json',
     };
+
     return this.httpService
-      .get(url, { headers })
+      .get<Cat[]>(url, { headers })
       .pipe(map(response => response.data));
   }
 }
