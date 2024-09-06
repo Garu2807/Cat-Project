@@ -39,3 +39,4 @@
 
 - необходимо использовать PostgreSQL, TypeORM и TypeScript, остальные технологии опциональны
 - API описан в файле openapi.yaml
+//
