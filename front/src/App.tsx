@@ -1,16 +1,19 @@
-import { useEffect } from 'react';
-import { Main } from './App.styles';
+import { Global, Main } from './App.styles';
 import CatList from './features/cats/CatList';
-import { useAppDispatch } from './features/store';
-import { getCats } from './features/cats/CatSlice';
+import NavBar from './features/navbar/NavBar';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App(): JSX.Element {
   return (
-    <>
+    <Router>
+      <Global />
       <Main>
-        <CatList />
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<CatList />} />
+        </Routes>
       </Main>
-    </>
+    </Router>
   );
 }
 

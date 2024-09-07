@@ -15,7 +15,7 @@ export class CatsService {
   getCats(): Observable<Cat[]> {
     const url = 'https://api.thecatapi.com/v1/images/search?limit=15';
     const headers = {
-      'x-api-key': 'Api_key',
+      'x-api-key': process.env.API_KEY,
       'Content-Type': 'application/json',
     };
 
